@@ -55,4 +55,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  match "/movies/search_tmdb", to: "movies#search_tmdb", via: :post
+  match "/movies/add_tmdb", to: "movies#add_tmdb", via: :post
 end
