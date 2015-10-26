@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
     movie_arr = Array.new
     
     
-    if !movie_match.nil?!
+    if not(movie_match.nil?)
         movie_match.each do |m|
            hash = Hash.new
            hash[:title] = m.title

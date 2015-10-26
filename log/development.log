@@ -3414,3 +3414,155 @@ Processing by MoviesController#index as HTML
   [1m[35mMovie Load (0.8ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')
   Rendered movies/index.html.haml within layouts/application (20.5ms)
 Completed 200 OK in 78ms (Views: 75.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/movies" for 173.28.211.193 at 2015-10-26 04:35:36 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+Redirected to https://selt-seanbateman.c9.io/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1
+Completed 302 Found in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1" for 173.28.211.193 at 2015-10-26 04:35:37 +0000
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"G"=>"1", "NC-17"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}}
+  [1m[35mMovie Load (0.8ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')
+  Rendered movies/index.html.haml within layouts/application (44.2ms)
+Completed 200 OK in 258ms (Views: 243.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/movies/search_tmdb?method=post" for 173.28.211.193 at 2015-10-26 04:35:41 +0000
+Processing by MoviesController#search_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bmr19swruzoujo4dUUYH0oDSD4SkMmUPXT+0E6eRlbnja5evJ3L9e0ieLtnU6jt0yPNaFtcTGSn5OXNxT4yUPQ==", "search_criteria"=>{"criteria"=>"hello"}, "commit"=>"Search TMDB For Movies", "method"=>"post"}
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.0ms)
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/models/movie.rb:13:in `nil?'
+  app/models/movie.rb:13:in `find_in_tmdb'
+  app/controllers/movies_controller.rb:74:in `search_tmdb'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.7ms)
+
+
+Started GET "/movies" for 173.28.211.193 at 2015-10-26 04:35:59 +0000
+Processing by MoviesController#index as HTML
+Redirected to https://selt-seanbateman.c9.io/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1" for 173.28.211.193 at 2015-10-26 04:35:59 +0000
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"G"=>"1", "NC-17"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}}
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (33.4ms)
+Completed 200 OK in 83ms (Views: 79.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/movies/search_tmdb?method=post" for 173.28.211.193 at 2015-10-26 04:36:03 +0000
+Processing by MoviesController#search_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ANPIaqTc2JwGCjMRG4YMcK5cIjPBAGCa/H/tSswwFvuN0qozT4We3WAak9WeKjDW5n13obIhHLxYeSooJC0Xfw==", "search_criteria"=>{"criteria"=>"hello"}, "commit"=>"Search TMDB For Movies", "method"=>"post"}
+  Rendered movies/search_tmdb.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 119ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies/add_tmdb" for 173.28.211.193 at 2015-10-26 04:36:09 +0000
+Processing by MoviesController#add_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"f3rBTw5I3mj61JwHYeF27lph/B8fApvfiuy9cLUYiJLye6MW5RGYKZzEPMPkTUpIEkCpjWwj5/ku6noSXQWJFg==", "tmdb_movies"=>["1", "1"], "commit"=>"Add Selected Movies"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `keys' for ["1", "1"]:Array):
+  app/controllers/movies_controller.rb:98:in `add_tmdb'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.2ms)
+
+
+Started GET "/movies" for 173.28.211.193 at 2015-10-26 04:36:45 +0000
+Processing by MoviesController#index as HTML
+Redirected to https://selt-seanbateman.c9.io/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1" for 173.28.211.193 at 2015-10-26 04:36:45 +0000
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"G"=>"1", "NC-17"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}}
+  [1m[35mMovie Load (0.4ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')
+  Rendered movies/index.html.haml within layouts/application (22.3ms)
+Completed 200 OK in 66ms (Views: 63.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/movies/search_tmdb?method=post" for 173.28.211.193 at 2015-10-26 04:36:48 +0000
+Processing by MoviesController#search_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hlfR6C4J5fmkBidfC+ZHicYfhOIIFDdFzew+LjoFzSILVrOxxVCjuMIWh5uOSnsvjj7RcHs1S2Np6vlM0hjMpg==", "search_criteria"=>{"criteria"=>"hello"}, "commit"=>"Search TMDB For Movies", "method"=>"post"}
+  Rendered movies/search_tmdb.html.haml within layouts/application (12.5ms)
+Completed 200 OK in 163ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies/add_tmdb" for 173.28.211.193 at 2015-10-26 04:36:55 +0000
+Processing by MoviesController#add_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q7+s9vK+lbUdluJ0J4hVjW8BUJB5M/tDeThgOhpVF1rOvs6vGefT9HuGQrCiJGkrJyAFAgoSh2XdPqdY8kgW3g==", "tmdb_movies"=>["1", "1"], "commit"=>"Add Selected Movies"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `keys' for ["1", "1"]:Array):
+  app/controllers/movies_controller.rb:98:in `add_tmdb'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.6ms)
+
+
+Started GET "/movies" for 173.28.211.193 at 2015-10-26 04:37:41 +0000
+Processing by MoviesController#index as HTML
+Redirected to https://selt-seanbateman.c9.io/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1" for 173.28.211.193 at 2015-10-26 04:37:41 +0000
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"G"=>"1", "NC-17"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (18.1ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/movies/search_tmdb?method=post" for 173.28.211.193 at 2015-10-26 04:37:47 +0000
+Processing by MoviesController#search_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fCMRUJhpM8AT0n5CTrE16mks3dH8ebTFb9r/E2UlrrjxInMJczB1gXXC3obLHQlMIQ2IQ49YyOPL3DhxjTivPA==", "search_criteria"=>{"criteria"=>"job"}, "commit"=>"Search TMDB For Movies", "method"=>"post"}
+  Rendered movies/search_tmdb.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 126ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies/add_tmdb" for 173.28.211.193 at 2015-10-26 04:37:52 +0000
+Processing by MoviesController#add_tmdb as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PRy6EG0sCOvXC1t0FsRh1z9kWnYRDkABPlBJgau2+cCwHdhJhnVOqrEb+7CTaF1xd0UP5GIvPCeaVo7jQ6v4RA==", "tmdb_movies"=>{"9654"=>"1", "227783"=>"1"}, "commit"=>"Add Selected Movies"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("title", "release_date", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "The Italian Job"], ["release_date", "2003-05-30 00:00:00.000000"], ["description", "After being betrayed and left for dead in Italy, Charlie Croker and his team plan an elaborate gold heist against their former ally."], ["created_at", "2015-10-26 04:37:52.561781"], ["updated_at", "2015-10-26 04:37:52.561781"]]
+  [1m[35m (8.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("title", "release_date", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "The Nut Job"], ["release_date", "2014-01-17 00:00:00.000000"], ["description", "Surly, a curmudgeon, independent squirrel is banished from his park and forced to survive in the city. Lucky for him, he stumbles on the one thing that may be able to save his life, and the rest of park community, as they gear up for winter - Maury's Nut Store."], ["created_at", "2015-10-26 04:37:52.669361"], ["updated_at", "2015-10-26 04:37:52.669361"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+Redirected to https://selt-seanbateman.c9.io/movies
+Completed 302 Found in 201ms (ActiveRecord: 18.9ms)
+
+
+Started GET "/movies" for 173.28.211.193 at 2015-10-26 04:37:52 +0000
+Processing by MoviesController#index as HTML
+Redirected to https://selt-seanbateman.c9.io/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1" for 173.28.211.193 at 2015-10-26 04:37:52 +0000
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"G"=>"1", "NC-17"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}}
+  [1m[35mMovie Load (0.5ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R')
+  Rendered movies/index.html.haml within layouts/application (15.7ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.5ms)
